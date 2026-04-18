@@ -81,7 +81,7 @@ Configure Amazon Inspector to use hybrid scanning mode, which combines both agen
 | High | CVE-2025-59046 | interactive-git-checkout |
 | Low | CVE-2025-47278 | flask |
 
-![Severity Findings](Sev-Findings-AWS.png)
+![Severity Findings](./Sev-Findings-AWS.jpeg)
 
 3. Choose a specific finding to open a pane displaying its detailed information.
 4. In the finding details pane, examine the following key sections:
@@ -136,7 +136,7 @@ Create a suppression rule to automatically filter out lower-severity security fi
 7. Choose **Save**.
 8. Verify that the new suppression rule appears in the Suppression rules list.
 
-![Suppression Rule](suppress-rule-aws.png)
+![Suppression Rule](./suppress-rule-aws.jpeg)
 
 > **Note:** By creating this suppression rule, you have configured Amazon Inspector to automatically hide low-severity findings, allowing your security team to focus on more critical vulnerabilities that require immediate attention.
 
