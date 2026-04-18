@@ -41,7 +41,7 @@ Verified ability to access the web server.
 
 **Output:** The connection timed out after approximately 1 minute with an error stating the page could not be reached. No security group rules existed to allow traffic to pass from the load balancer to the web server.
 
-![snap 1](./snap-1.png)
+![Connectivity Timeout](./snap-1.PNG)
 
 ---
 
@@ -59,7 +59,7 @@ Verified ability to access the web server.
 
 > **Note:** This rule allows inbound traffic on port 443 to any resource in the WebServerSG security group from any IPv4 source IP. Because this project uses a Network Load Balancer to pass traffic directly to the web server, HTTPS connections must be allowed from any source.
 
-![HTTPS inbound rule added](./snap-3.png)
+![HTTPS inbound rule added](./snap-3.PNG)
 
 ---
 
@@ -71,7 +71,7 @@ Verified the rules added to the security group allow access to the web server.
 
 **Expected output:** An Apache HTTP server test page loads.
 
-![Apache test page](./snap-2.png)
+![Apache test page](./snap-2.PNG)
 
 After confirming web server access over HTTPS, attempting to access the WordPress site resulted in a **Gateway Timeout** error after approximately 1 minute. WordPress hosts the web page on one instance and its database on a different instance in a separate private subnet. No security group rules existed to allow traffic from the web server EC2 instance to the database server EC2 instance.
 
@@ -89,7 +89,7 @@ After confirming web server access over HTTPS, attempting to access the WordPres
    - **Description:** Allow MYSQL database traffic to resources in the DatabaseServerSG security group
 4. Choose **Save rules**
 
-![Web server outbound rule](./snap-4.png)
+![Web server outbound rule](./snap-4.PNG)
 
 **Step 2 — Add inbound rule to Database Server SG:**
 
@@ -101,7 +101,7 @@ After confirming web server access over HTTPS, attempting to access the WordPres
    - **Description:** Allow MYSQL database traffic from resources in the WebServerSG security group
 4. Choose **Save rules**
 
-![Database server inbound rule](./snap-5.png)
+![Database server inbound rule](./snap-5.PNG)
 
 ---
 
@@ -111,7 +111,7 @@ With security group rules in place to allow traffic to flow to the database serv
 
 **Expected output:** The WordPress welcome page loads.
 
-![WordPress welcome page](./snap-6.png)
+![WordPress welcome page](./snap-6.PNG)
 
 **Task 1 Complete:** Successfully added security group rules to allow only the appropriate traffic to connect to the WordPress site hosted in the private subnet.
 
@@ -293,7 +293,7 @@ ${account-id} ${interface-id} ${srcaddr} ${srcport} ${dstaddr} ${dstport} ${subn
 5. Choose **Search all log streams** to review log entries
 6. Use the expand arrow to view the full message for each log entry and determine which traffic was allowed vs. rejected
 
-![VPC Flow Logs in CloudWatch](./snap-7.png)
+![VPC Flow Logs in CloudWatch](./snap-7.PNG)
 
 **Task 3 Complete:** Successfully created VPC Flow Logs to monitor network traffic within the VPC.
 
