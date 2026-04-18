@@ -99,7 +99,7 @@ There are two conditions that must both be true for a role assumption to succeed
     "Version": "2012-10-17",
     "Statement": {
         "Action": "sts:AssumeRole",
-        "Resource": "arn:aws:iam::668122297486:role/Operator-Role",
+        "Resource": "arn:aws:iam::668122xxxxxx:role/Operator-Role",
         "Effect": "Allow",
         "Sid": "AssumeRole"
     }
