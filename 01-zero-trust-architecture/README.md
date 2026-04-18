@@ -4,7 +4,7 @@
 
 This project demonstrates how to implement **Zero Trust principles** for service-to-service architectures on AWS. It walks through a realistic microservices scenario where a calling service (ServiceA) communicates with a target service (ServiceB) through AWS PrivateLink, and progressively hardens the security posture using layered, identity-centric controls.
 
-The lab moves away from legacy network-centric access controls and toward a modern Zero Trust model by leveraging **IAM authorization**, **API Gateway resource policies**, **VPC endpoint policies**, and **security group rules** in combination.
+The project moves away from legacy network-centric access controls and toward a modern Zero Trust model by leveraging **IAM authorization**, **API Gateway resource policies**, **VPC endpoint policies**, and **security group rules** in combination.
 
 ---
 
