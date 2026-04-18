@@ -41,7 +41,7 @@ Verified ability to access the web server.
 
 **Output:** The connection timed out after approximately 1 minute with an error stating the page could not be reached. No security group rules existed to allow traffic to pass from the load balancer to the web server.
 
-![Connectivity timeout](./snap-1.png)
+![snap 1](./snap-1.png)
 
 ---
 
