@@ -145,10 +145,10 @@ dynamodb_resource.Table('Table1').put_item(Item={ ... })
 Create a second KMS key (`DynamoDB_Direct_CMP_Key`), then use the `AwsKmsCryptographicMaterialsProvider`:
 
 ```python
-spotlight_lab_direct_kms_cmp = AwsKmsCryptographicMaterialsProvider('KMS_KEY_ARN')
+spotlight_project_direct_kms_cmp = AwsKmsCryptographicMaterialsProvider('KMS_KEY_ARN')
 encrypted_table_access = EncryptedTable(
-    table=spotlightLabTable2,
-    materials_provider=spotlight_lab_direct_kms_cmp
+    table=spotlightprojectTable2,
+    materials_provider=spotlight_project_direct_kms_cmp
 )
 encrypted_table_access.put_item(Item={ ... })
 ```
@@ -168,14 +168,14 @@ private_signing_key = JceNameLocalDelegatedKey(
     key=get_random_bytes(32), algorithm='HmacSHA512',
     key_type=EncryptionKeyType.SYMMETRIC, key_encoding=KeyEncodingType.RAW
 )
-spotlight_lab_wrapped_cmp = WrappedCryptographicMaterialsProvider(
+spotlight_project_wrapped_cmp = WrappedCryptographicMaterialsProvider(
     wrapping_key=private_wrapping_key,
     unwrapping_key=private_wrapping_key,
     signing_key=private_signing_key
 )
 encrypted_table_access = EncryptedTable(
     table=dynamodb_resource.Table('Table3'),
-    materials_provider=spotlight_lab_wrapped_cmp
+    materials_provider=spotlight_project_wrapped_cmp
 )
 ```
 
@@ -241,15 +241,15 @@ ciphertext, encryptor_header = client.encrypt(
 Connect to **Public-Instance** via Session Manager and set environment variables:
 
 ```bash
-lab_bucket=mybucket-48523xxxx
-lab_region=us-west-2
+project_bucket=mybucket-48523xxxx
+project_region=us-west-2
 ```
 
 Upload a test object:
 
 ```bash
-aws --endpoint-url https://s3.$lab_region.amazonaws.com s3api put-object \
-  --bucket $lab_bucket \
+aws --endpoint-url https://s3.$project_region.amazonaws.com s3api put-object \
+  --bucket $project_bucket \
   --body object01.txt \
   --key object01.txt
 ```
@@ -267,8 +267,8 @@ Expected output confirms SSE-KMS encryption on the upload:
 Connect to **Private-Instance** and set variables:
 
 ```bash
-lab_bucket=INSERT_LAB_BUCKET_NAME
-lab_region=INSERT_LAB_REGION_CODE
+project_bucket=INSERT_project_BUCKET_NAME
+project_region=INSERT_project_REGION_CODE
 kms_green_key_id=INSERT_KMS_GREEN_KEY_ID
 kms_red_key_id=INSERT_KMS_RED_KEY_ID
 ```
@@ -276,7 +276,7 @@ kms_red_key_id=INSERT_KMS_RED_KEY_ID
 List objects from Private-Instance to confirm VPC endpoint connectivity:
 
 ```bash
-aws --endpoint-url https://s3.$lab_region.amazonaws.com s3api list-objects --bucket $lab_bucket
+aws --endpoint-url https://s3.$project_region.amazonaws.com s3api list-objects --bucket $project_bucket
 ```
 
 > **Task complete:** Connectivity verified from both instances. Bucket has no policy applied yet (all access controlled via IAM).
