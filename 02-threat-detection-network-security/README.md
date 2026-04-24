@@ -365,7 +365,7 @@ Expected output:
 {"message":"Forbidden"}
 ```
 
-![Default Block ACL](./snap11.png)
+![Default Block ACL](./snap-11.png)
 
 ---
 
